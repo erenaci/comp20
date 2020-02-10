@@ -1,0 +1,31 @@
+songs {
+	margin:10px;
+	background-color:#BFEFFF;
+	font-family:Tahoma, Geneva, sans-serif;
+}
+
+music {
+	background-color:#E2FC66;
+}
+
+artist {
+	display:block;
+	font-weight: bold;
+	padding:0px 0px 0px 15px;
+}
+
+name {
+	padding-top: 25px;
+	display:block;
+	font-style:italic;
+	font-size:20px;
+}
+
+genre {
+	font-size: small;
+	padding:5px 15px;
+}
+
+year {
+	font-size:small;
+}
