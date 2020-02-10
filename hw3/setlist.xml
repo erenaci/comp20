@@ -1,0 +1,64 @@
+<?xml version ="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="style.css"?>
+<songs>
+	<music>
+		<name>Separate Ways (Worlds Apart)</name>
+		<artist>Journey</artist>
+		<genre>Classic Rock</genre>
+		<year>1983</year>
+	</music>
+	<music>
+		<name>Freedom</name>
+		<artist>Wham!</artist>
+		<genre>Pop</genre>
+		<year>1985</year>
+	</music>
+	<music>
+		<name>The Boys Of Summer</name>
+		<artist>Don Henley</artist>
+		<genre>Adult Contemporary</genre>
+		<year>1984</year>
+	</music>
+	<music>
+		<name>Can't Fight The Moonlight</name>
+		<artist>LeAnn Rimes</artist>
+		<genre>Pop</genre>
+		<year>2000</year>
+	</music>
+	<music>
+		<name>You're the Inspiration</name>
+		<artist>Chicago</artist>
+		<genre>Classic Rock</genre>
+		<year>1984</year>
+	</music>
+	<music>
+		<name>One Of Us</name>
+		<artist>ABBA</artist>
+		<genre>Pop</genre>
+		<year>1981</year>
+	</music>	
+	<music>
+		<name>Straight Up</name>
+		<artist>Paula Abdul</artist>
+		<genre>Pop</genre>
+		<year>1988</year>
+	</music>
+	<music>
+		<name>Drowning</name>
+		<artist>Backstreet Boys</artist>
+		<genre>Pop</genre>
+		<year>2001</year>
+	</music>
+	<music>
+		<name>Truly Madly Deeply</name>
+		<artist>Savage Garden</artist>
+		<genre>Adult Contemporary</genre>
+		<year>1997</year>
+	</music>
+	<music>
+		<name>Livin' On A Prayer</name>
+		<artist>Bon Jovi</artist>
+		<genre>Rock</genre>
+		<year>1986</year>
+	</music>
+</songs>
