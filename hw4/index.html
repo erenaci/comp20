@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Joe's Hotdog Stand</title>
+    </head>
+    <body>
+        <h1>Welcome to Joe's Hotdogs!</h1>
+        <h2>Your Order</h2>
+        <script lnguage="javascript">
+            hotdogs = prompt("How many hotdogs?", "1");
+            price_h = 3.25 * hotdogs;
+            document.write("# Hotdogs: ", hotdogs, " at $3.25 is $", 
+                           price_h.toFixed(2), "<br>");
+            fries = prompt("How many fries?", "1");
+            price_f = 2.00 * fries;
+            document.write("# Fries: ", fries, " at $2.00 is $", 
+                           price_f.toFixed(2), "<br>");
+            sodas = prompt("How many sodas?", "1");
+            price_s = 1.50 * sodas;
+            document.write("# Sodas: ", sodas, " at $1.50 is $", 
+                           price_s.toFixed(2), "<br>");
+            subtotal = price_h + price_f + price_s;
+            if (subtotal > 20.00) {
+            subtotal = subtotal * 0.9;
+                document.write("You qualified for our 10% discount :)<br>",
+                               "Subtotal: $", subtotal.toFixed(2), "<br>");
+            }
+            else {
+                document.write("Subtotal: $", subtotal.toFixed(2), "<br>");
+            }
+            tax = subtotal * 0.0625;
+            document.write("Meals Tax: $", tax.toFixed(2), "<br>");
+            total = subtotal + tax;
+            document.write("Order Total: $", total.toFixed(2), "<br>");
+        </script>
+    </body>
+</html>
