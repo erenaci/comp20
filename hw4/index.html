@@ -21,7 +21,7 @@
             document.write("# Sodas: ", sodas, " at $1.50 is $", 
                            price_s.toFixed(2), "<br>");
             subtotal = price_h + price_f + price_s;
-            if (subtotal > 20.00) {
+            if (subtotal >= 20.00) {
             subtotal = subtotal * 0.9;
                 document.write("You qualified for our 10% discount :)<br>",
                                "Subtotal: $", subtotal.toFixed(2), "<br>");
