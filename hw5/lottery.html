@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lucky for Life Lottery</title>
+	</head>
+	<body>
+        <h1>Welcome to Lucky for Life Lottery!</h1>
+        <form>
+            <br>Numbers:&nbsp&nbsp&nbsp <input id='numbers' type='text'><br>
+            <br>Lucky Ball: <input id='luckyNumber' type='number'><br>
+            <input type='button' value="Take my chance!"
+                   onclick = "parse()">
+        </form>
+		<script language="javascript">
+			var num1 = Math.floor(Math.random() * 48) + 1;
+			var num2 = Math.floor(Math.random() * 48) + 1;
+            if (num1 == num2) {
+                num2 = Math.floor(Math.random() * 48) + 1;
+            }
+			var num3 = Math.floor(Math.random() * 48) + 1;
+            if (num1 == num3 || num2 == num3) {
+                num3 = Math.floor(Math.random() * 48) + 1;
+            }
+			var num4 = Math.floor(Math.random() * 48) + 1;
+            if (num1 == num3 || num2 == num4 || num3 == num4) {
+                num4 = Math.floor(Math.random() * 48) + 1;
+            }
+			var num5 = Math.floor(Math.random() * 48) + 1;
+            if (num1 == num5 || num2 == num5 || num3 == num5 || num4 == num5) {
+                num4 = Math.floor(Math.random() * 48) + 1;
+            }
+			var luckyNum = Math.floor(Math.random() * 18) + 1;
+			var nums = [num1, num2, num3, num4, num5, luckyNum];
+            var justNums = [num1, num2, num3, num4, num5];
+			for (var i = 0; i < nums.length; i++) {
+                if (i != 5)
+				    document.write(nums[i], ",&nbsp");
+                else
+                    document.write(nums[i], "<br>");
+			}        
+            document.write("<br>After sorting...<br><br>");
+            var sorted = justNums.sort(function(a, b){return a-b});
+            sorted[5] = luckyNum;
+            for (var i = 0; i < sorted.length; i++) {
+                if (i == 5) {
+                    document.write(luckyNum, "<br>");
+                }
+                else {
+                    document.write(sorted[i], ",&nbsp");
+                }
+			}
+            function parse() {
+                var str = document.getElementById('numbers').value;
+                var numArr = str.split(' ');
+                checkMatch(numArr, sorted);
+            }
+            function checkMatch(array, sorted) {
+                var pickedLuckyNum = document.getElementById('luckyNumber').value;
+                var lucky = false;
+                var match = 0;
+                var intArr = [];
+                for (var i = 0; i < 5; i++) {
+                    var arrayi = parseInt(array[i], 10);
+                    intArr[i] = arrayi;
+                }
+                var sorted2 = intArr.sort(function(a, b){return a-b});
+                console.log(sorted2);
+                for (var i = 0; i < 5; i++) {
+                    for (var j = 0; j < 5; j++) {
+                        if (sorted2[i] == sorted[j]) {
+                            match++;
+                        }
+                    }
+                }
+                if (luckyNum == pickedLuckyNum) {
+                    lucky = true;
+                }
+                calcPayout(match, lucky);
+            }
+            function calcPayout(matchNum, isLucky) {
+                if (matchNum == 0) {
+                    if(isLucky) {
+                        document.write("You won $4!<br>");
+                    }
+                    else {
+                        document.write("No win :( Try again next time!<br>");
+                    }
+                }
+                if (matchNum == 1) {
+                    if (isLucky) {
+                        document.write("You won $6!<br>");
+                    }
+                    else {
+                        document.write("No win :( Try again next time!<br>");
+                    }
+                }
+                if (matchNum == 2) {
+                    if (isLucky) {
+                        document.write("You won $25!!<br>");
+                    }
+                    else {
+                        document.write("You won $3!<br>");
+                    }
+                }
+                if (matchNum == 3) {
+                    if (isLucky) {
+                        document.write("You won $150!!<br>");
+                    }
+                    else {
+                        document.write("You won $20!<br>");
+                    }
+                }
+                if (matchNum == 4) {
+                    if (isLucky) {
+                        document.write("Wow, you won $5000!!<br>");
+                    }
+                    else {
+                        document.write("You won $200!<br>");
+                    }
+                }
+                if (matchNum == 5) {
+                    if (isLucky) {
+                        document.write("Congrats, you won $7000 a WEEK for LIFE!!<br>");
+                    }
+                    else {
+                        document.write("Congrats, you won $25000 a YEAR for LIFE!!!<br>");
+                    }
+                }
+            }
+        </script>
+	</body>
+</html>
