@@ -106,7 +106,7 @@ function makeSelect(name, minRange, maxRange)
     
   function verify ()
   {
-      var phonenum = /^\d{10}$/;
+      var phonenum = /^\(?([0-9]{3})\)?[-]?([0-9]{3})[-]?([0-9]{4})$/;
       var inputPhoneNum = document.getElementsByName("phone")[0].value;
       var now = new Date();
       var h = now.getHours();
@@ -116,7 +116,7 @@ function makeSelect(name, minRange, maxRange)
           return false;
       }
       if (! phonenum.test(inputPhoneNum)) {
-          alert("Must enter a valid phone number.");
+          alert("Please enter a valid phone number: xxx-xxx-xxxx");
           return false;
       }
       if (document.getElementsByName("p_or_d")[0].checked == true) {
