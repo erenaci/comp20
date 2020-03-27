@@ -1,0 +1,126 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Setlist JSON</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	</head>
+		<script>
+            // PART 1: JSON
+            var setlist = [
+                            {
+                                "title": "Separate Ways (Worlds Apart)",
+                                "artist": "Journey",
+                                "genre": "Classic Rock",
+                                "year": "1983"
+                            },
+                            {
+                                "title": "Freedom",
+                                "artist": "Wham!",
+                                "genre": "Pop",
+                                "year": "1985"
+                            },
+                            {
+                                "title": "Boys Of Summer",
+                                "artist": "Don Henley",
+                                "genre": "Adult Contemporary",
+                                "year": "1984"
+                            },
+                            {
+                                "title": "Can't Fight The Moonlight",
+                                "artist": "LeAnn Rimes",
+                                "genre": "Pop",
+                                "year": "2000"
+                            },
+                            {
+                                "title": "You're The Inspiration",
+                                "artist": "Chicago",
+                                "genre": "Classic Rock",
+                                "year": "1984"
+                            },
+                            {
+                                "title": "One of Us",
+                                "artist": "ABBA",
+                                "genre": "Pop",
+                                "year": "1981"
+                            },
+                            {
+                                "title": "Straight Up",
+                                "artist": "Paula Abdul",
+                                "genre": "Pop",
+                                "year": "1988"
+                            },
+                            {
+                                "title": "Drowning",
+                                "artist": "Backstreet Boys",
+                                "genre": "Pop",
+                                "year": "2001"
+                            },
+                            {
+                                "title": "Truly Madly Deeply",
+                                "artist": "Savage Garden",
+                                "genre": "Adult Contemporary",
+                                "year": "1997"
+                            },
+                            {
+                                "title": "Livin' On A Prayer",
+                                "artist": "Bon Jovi",
+                                "genre": "Rock",
+                                "year": "1986"
+                            },
+                            {
+                                "title": "St. Elmo's Fire (Man In Motion)",
+                                "artist": "John Parr",
+                                "genre": "Rock",
+                                "year": "1984"
+                            }
+                        ];
+            // PART 2: Serialized data and display
+            var jsonString = JSON.stringify(setlist);
+            document.write("Serialized Data:", "<br><br>", jsonString); 
+            
+            var songs = JSON.parse(jsonString);
+            
+            // PART 3: User friendly display
+            $(document).ready(function () {
+                for (var i = 0; i < songs.length; i++) {
+                    $('table').append('<tr><td>', songs[i].title, '<br>Artist: ', songs[i].artist, '<br>Genre: ', songs[i].genre, '<br>Released ', songs[i].year, '</td></tr>');
+                }
+            });
+            
+            // PART 4: Filtering the data by genre
+            var toPrint = "";
+            $(document).ready(function() {
+                $('select').change(function () {
+                    toPrint = "Song(s) that is/are of the genre you selected are: <br/><br/>"
+                    var pickedGenre = $(this).find(':selected').val();
+                    for (var i = 0; i < songs.length; i++) {
+                        if (songs[i].genre == pickedGenre) {
+                            toPrint += (songs[i].title + '<br/>');
+                        }
+                    }
+                });
+                $('button').click(function() {
+                    document.write(toPrint);
+                });
+            });
+            
+        </script>  
+    <body>
+        <p>User Friendly Display: </p>
+        <table border="1px" cellspacing="0" cellpadding="0"></table>
+        
+        <p>Filter by Genre: </p>
+        <form>
+            <select id="genre">
+                <option value="NULL">-- Select Genre --</option>
+                <option value="Classic Rock">Classic Rock</option>
+                <option value="Pop">Pop</option>
+                <option value="Adult Contemporary">Adult Contemporary</option>
+                <option value="Rock">Rock</option>
+            </select>
+            <button type="button">Filter</button>
+        </form>
+	</body>
+
+</html>
