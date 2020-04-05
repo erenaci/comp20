@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+    <head>
+        <title>API Homework</title>
+        <meta charset="utf-8">
+        <script>
+            
+            function loadData() { 
+                request = new XMLHttpRequest();
+
+                request.open("GET", "https://api.exchangeratesapi.io/latest?base=USD", true);
+                
+                document.getElementById("status").innerHTML += "<br>current ready state: " + request.readyState;
+                
+                request.onreadystatechange = function () {
+                    document.getElementById("status").innerHTML += "<br>current ready state: " + request.readyState;
+  
+                    if (request.readyState == 4 && request.status == 200) 
+                    {
+                        document.getElementById("status").innerHTML += "<br><br>Raw data with USD base:<br>" + request.responseText;
+                        obj = JSON.parse(request.responseText);
+                        document.getElementById("header").innerHTML += "Rate as of "  + obj.date + " is: " + obj.rates.JPY + "<br><br>";
+                    }
+                    else if (request.readyState == 4 && request.status != 200) 
+                    {
+                       document.getElementById("coordData").innerHTML += "<br>Request failed!";
+                    }
+                }
+                request.send();
+            }
+            
+            function USDtoJPY() {
+                request = new XMLHttpRequest();
+
+                request.open("GET", "https://api.exchangeratesapi.io/latest?base=USD&symbols=JPY", true);
+                
+                request.onreadystatechange = function() {
+                    if (request.readyState == 4 && request.status == 200) {
+                        obj = JSON.parse(request.responseText);
+                        var yenVal = document.getElementById("toExchange").value*obj.rates.JPY;
+                        document.getElementById("result").innerHTML = "JPY: ¥ " + yenVal.toFixed(0) + "<br>";
+                    }
+                    else if (request.readyState == 4 && request.status != 200)  {
+                       document.getElementById("coordData").innerHTML += "<br>Request failed!";
+                    }  
+                }
+                request.send();
+            }
+            
+        </script>
+    </head>
+    
+    <body>
+        <h2>API Request</h2>
+    	<div id="status">Loading...</div>
+    	<script language="javascript">
+		  loadData();
+	    </script>
+        
+        <h2>Trying out API</h2>
+        <h3><em>Currency Exchange</em></h3>
+        <div id="header">Insert how much USD you would like to exchange to JPY below.<br> </div>
+        
+        <label for="toExchange">USD: $</label>
+        <input type="number" id="toExchange">
+        <input type="submit" value="Exchange!" onclick="USDtoJPY()">
+        <div id="result"></div>
+        
+        <h2>About this API</h2>
+        <p>The API I selected exchange rates with currency conversion. It contains the data of exchange rates to many currencies, including USD, JPY, GBP, and more. The default base currency is in Euro, but with base attribute, once can request currency rate in differenst base currency. I made my base currency in USD. <br><br> I found the API <a href="https://exchangeratesapi.io">here</a> (https://exchangeratesapi.io). <br><br> The options I used to request the API is latest, base, and symbols. The client can choose between 'latest' and 'history' -- 'latest' privides the latest rate and 'history' provides the rate at the spcified date. 'base' option allows the client to change the base currency. Finally, 'symbols' option lets the client choose specific exchange rates. <br><br> This API would be useful for online shopping websites so that the price of each item can be represented in the currency of the country that the users are buying from. Another application would simpley be for currency exchange app or bank app for those who live internationally and has bank accounts in multiple countries. </p>
+    </body>
+
+</html>
